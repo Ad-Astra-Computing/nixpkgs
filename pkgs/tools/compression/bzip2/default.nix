@@ -31,6 +31,7 @@ stdenv.mkDerivation (
 
     patches = [
       ./patches/bzip2-1.0.6.2-autoconfiscated.patch
+      ./CVE-2026-42250.patch
     ];
     # Fix up hardcoded version from the above patch, e.g. seen in bzip2.pc or libbz2.so.1.0.N
     postPatch = ''
