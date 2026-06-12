@@ -46,6 +46,7 @@ stdenv.mkDerivation (finalAttrs: {
       url = "https://src.fedoraproject.org/rpms/graphite2/raw/deba28323b0a3b7a3dcfd06df1efc2195b102ed7/f/graphite2-1.3.14-gcc15.patch";
       hash = "sha256-vkkGkHkcsj1mD3OHCHLWWgpcmFDv8leC4YQm+TsbIUw=";
     })
+    ./CVE-2026-50593.patch
   ]
   ++ lib.optionals stdenv.hostPlatform.isDarwin [ ./macosx.patch ];
   postPatch = ''
