@@ -27,6 +27,8 @@ stdenv.mkDerivation rec {
       url = "https://github.com/rofl0r/proxychains-ng/commit/fffd2532ad34bdf7bf430b128e4c68d1164833c6.patch";
       hash = "sha256-l3qSFUDMUfVDW1Iw+R2aW/wRz4CxvpR4eOwx9KzuAAo=";
     })
+    # CVE-2025-34451: stack buffer overflow in proxy_from_string for non-socks5 proxies
+    ./CVE-2025-34451.patch
   ];
 
   configureFlags = lib.optionals stdenv.hostPlatform.isDarwin [
