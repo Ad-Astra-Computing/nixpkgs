@@ -44,6 +44,13 @@ stdenv.mkDerivation rec {
       extraPrefix = "lib/mbedtls/";
       hash = "sha256-Sllp/iWWEhykMJ3HALw5KzR4ta22120Jcl51JZCkZE0=";
     })
+    # CVE-2026-1998: type confusion in mp_import_all() when sys.modules contains
+    # a non-module object; fixed upstream in 570744d0 (PR #18671).
+    (fetchpatch {
+      name = "CVE-2026-1998.patch";
+      url = "https://github.com/micropython/micropython/commit/570744d06c5ba9dba59b4c3f432ca4f0abd396b6.patch";
+      hash = "sha256-j8xr4oqmrsYumJvyA71bx+/dg2HiUxSxdjKUR/2sclI=";
+    })
     ./fix-cross-compilation.patch
     ./fix-mpy-cross-path.patch
   ];
