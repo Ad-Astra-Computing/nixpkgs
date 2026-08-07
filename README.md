@@ -1,3 +1,10 @@
+> [!IMPORTANT]
+> This is the working fork for Trace, a research project on AI-assisted CVE
+> remediation run by [Ad Astra Computing](https://adastracomputing.com).
+> Pull requests on this fork measure how close the pipeline's output lands to
+> the upstream fix. They are never merge candidates. Nothing from this fork is
+> submitted to nixpkgs.
+
 <p align="center">
   <a href="https://nixos.org">
     <picture>
