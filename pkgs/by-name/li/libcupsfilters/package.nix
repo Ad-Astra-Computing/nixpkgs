@@ -31,6 +31,10 @@ stdenv.mkDerivation {
     hash = "sha256-WEcg+NSsny/N1VAR1ejytM+3nOF3JlNuIUPf4w6N2ew=";
   };
 
+  patches = [
+    ./CVE-2025-64503.patch
+  ];
+
   nativeBuildInputs = [
     autoreconfHook
     pkg-config
