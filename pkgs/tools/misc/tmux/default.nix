@@ -1,14 +1,18 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, autoreconfHook
-, bison
-, libevent
-, ncurses
-, pkg-config
-, withSystemd ? lib.meta.availableOn stdenv.hostPlatform systemd, systemd
-, withUtf8proc ? true, utf8proc # gets Unicode updates faster than glibc
-, withUtempter ? stdenv.isLinux && !stdenv.hostPlatform.isMusl, libutempter
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  autoreconfHook,
+  bison,
+  libevent,
+  ncurses,
+  pkg-config,
+  withSystemd ? lib.meta.availableOn stdenv.hostPlatform systemd,
+  systemd,
+  withUtf8proc ? true,
+  utf8proc, # gets Unicode updates faster than glibc
+  withUtempter ? stdenv.isLinux && !stdenv.hostPlatform.isMusl,
+  libutempter,
 }:
 
 let
@@ -26,7 +30,10 @@ stdenv.mkDerivation rec {
   pname = "tmux";
   version = "3.3a";
 
-  outputs = [ "out" "man" ];
+  outputs = [
+    "out"
+    "man"
+  ];
 
   src = fetchFromGitHub {
     owner = "tmux";
@@ -34,6 +41,10 @@ stdenv.mkDerivation rec {
     rev = version;
     sha256 = "sha256-SygHxTe7N4y7SdzKixPFQvqRRL57Fm8zWYHfTpW+yVY=";
   };
+
+  patches = [
+    ./CVE-2022-47016.patch
+  ];
 
   nativeBuildInputs = [
     pkg-config
@@ -44,14 +55,16 @@ stdenv.mkDerivation rec {
   buildInputs = [
     ncurses
     libevent
-  ] ++ lib.optionals withSystemd [ systemd ]
+  ]
+  ++ lib.optionals withSystemd [ systemd ]
   ++ lib.optionals withUtf8proc [ utf8proc ]
   ++ lib.optionals withUtempter [ libutempter ];
 
   configureFlags = [
     "--sysconfdir=/etc"
     "--localstatedir=/var"
-  ] ++ lib.optionals withSystemd [ "--enable-systemd" ]
+  ]
+  ++ lib.optionals withSystemd [ "--enable-systemd" ]
   ++ lib.optionals withUtempter [ "--enable-utempter" ]
   ++ lib.optionals withUtf8proc [ "--enable-utf8proc" ];
 
@@ -80,6 +93,11 @@ stdenv.mkDerivation rec {
     changelog = "https://github.com/tmux/tmux/raw/${version}/CHANGES";
     license = lib.licenses.bsd3;
     platforms = lib.platforms.unix;
-    maintainers = with lib.maintainers; [ thammers fpletz SuperSandro2000 srapenne ];
+    maintainers = with lib.maintainers; [
+      thammers
+      fpletz
+      SuperSandro2000
+      srapenne
+    ];
   };
 }
