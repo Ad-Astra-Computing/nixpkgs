@@ -54,6 +54,7 @@ stdenv.mkDerivation (finalAttrs: {
       url = "https://gitlab.com/gnuwget/wget/-/commit/dd692d9cea5335b181d877ae917fe6e75587a812.patch";
       hash = "sha256-FAlglKTZili9Y4ivSRLOEaOgektFmq4u6yyH+8WzQao=";
     })
+    ./CVE-2026-16599.patch
   ];
 
   preConfigure = ''
