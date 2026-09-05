@@ -49,6 +49,10 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-dzFqPhtsOSRbwR71j01trdBjwBTBuuyPDYF5jFGeBys=";
   };
 
+  patches = [
+    ./CVE-2025-11230.patch
+  ];
+
   buildInputs = [
     sslPkg
     zlib
