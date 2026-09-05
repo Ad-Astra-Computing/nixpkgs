@@ -23,6 +23,8 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-2ex2y+NNuY7sNTn+LImdJrDIN8s+tGalaw8QnKv2WPc=";
   };
 
+  patches = [ ./fix-CVE-2026-7598.patch ];
+
   # this could be accomplished by updateAutotoolsGnuConfigScriptsHook, but that causes infinite recursion
   # necessary for FreeBSD code path in configure
   postPatch = ''
