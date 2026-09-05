@@ -19,6 +19,8 @@ stdenv.mkDerivation rec {
     sha256 = "1nny4295ipy4ajcxmmh04c796hcds0y7z7rv3qd17mj70y8j0r2d";
   };
 
+  patches = [ ./fix-CVE-2021-45340.patch ];
+
   buildInputs = [
     gdk-pixbuf
     gd
