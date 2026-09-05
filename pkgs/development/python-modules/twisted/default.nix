@@ -77,6 +77,7 @@ buildPythonPackage rec {
       url = "https://github.com/twisted/twisted/commit/5b4601c9965ffc92d6aa952b8c05127d5ac37307.patch";
       hash = "sha256-mbSZOvzinfUolfOHJl+vEdAEGjy8OF2S/SrTsAbvjIw=";
     })
+    ./CVE-2024-41810.patch
   ];
 
   __darwinAllowLocalNetworking = true;
