@@ -30,6 +30,10 @@ python3Packages.buildPythonApplication {
     gsettings-desktop-schemas
   ];
 
+  patches = [
+    ./CVE-2026-78136.patch
+  ];
+
   build-system = with python3Packages; [
     setuptools
   ];
