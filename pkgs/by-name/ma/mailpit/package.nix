@@ -70,6 +70,8 @@ buildGoModule (finalAttrs: {
   pname = "mailpit";
   inherit src version vendorHash;
 
+  patches = [ ./CVE-2026-84697.patch ];
+
   env.CGO_ENABLED = 0;
 
   ldflags = [
