@@ -19,6 +19,10 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-0no+WT5cLDDtoRO5GKlsx9BLrv4n2JvDr9Dky0yNOsk=";
   };
 
+  patches = [
+    ./CVE-2025-47256.patch
+  ];
+
   outputs = [
     "out"
     "dev"
