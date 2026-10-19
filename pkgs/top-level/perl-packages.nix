@@ -15119,6 +15119,7 @@ let
       url = "mirror://cpan/authors/id/D/DO/DOUGW/Net-CIDR-Lite-0.21.tar.gz";
       sha256 = "cfa125e8a2aef9259bc3a44e07cbdfb7894b64d22e7c0cee92aee2f5c7915093";
     };
+    patches = [ ../development/perl-modules/NetCIDRLite-CVE-2021-47154.patch ];
     meta = {
       description = "Perl extension for merging IPv4 or IPv6 CIDR addresses";
     };
