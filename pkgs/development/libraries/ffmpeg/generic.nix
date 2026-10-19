@@ -492,6 +492,10 @@ stdenv.mkDerivation (finalAttrs: {
         url = "https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/7b7b7819bd21cc92ac07f6696b0e7f26fa8f9834";
         hash = "sha256-TKI289XqtG86Sj9s7mVYvmkjAuRXeK+2cYYEDkg6u6I=";
       })
+    ]
+    ++ optionals (version == "5.1.4") [
+      # CVE-2023-49502: bwdif OOB read on chroma-subsampled formats (backport of upstream 737ede405b via release/5.1 8e6c82cefb)
+      ./5.1.4-CVE-2023-49502.patch
     ];
 
   configurePlatforms = [];
